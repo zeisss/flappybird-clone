@@ -93,6 +93,7 @@ function draw() {
     })
 
     drawAnimation(bird1Asset, player1.pos.x, player1.pos.y);
+    drawDebugText(player1, createVector(progress + 900, 50))
     // renderAnimation(bird2Asset, player2.x, player2.y);
 }
 
@@ -134,4 +135,13 @@ function drawAnimation(animation, x, y) {
     scale(0.2)
     image(img, -img.width / 2, -img.height/2);
     pop();
+}
+
+function drawDebugText(player, p) {
+    pos2text = (pos) => {
+        return "(" + pos.x + "|" + pos.y + ")"
+    }
+    textAlign(RIGHT)
+    text("pos=" + pos2text(player.pos) + "\nvel=" + pos2text(player.vel) + "\nspd=" + pos2text(player.speed), p.x, p.y)
+
 }
