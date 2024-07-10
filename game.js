@@ -10,7 +10,8 @@ function setup() {
     frameRate(desiredFrameRate);
     createCanvas(1000, 600);
     pipeAsset = loadImage("assets/pipe.png");
-    bird1Asset = loadAnimation(["assets/bird1/frame-1.png",
+    bird1Asset = loadAnimation([
+        "assets/bird1/frame-1.png",
         "assets/bird1/frame-2.png",
         "assets/bird1/frame-3.png",
         "assets/bird1/frame-4.png"
@@ -88,14 +89,14 @@ function draw() {
 
     translate(-progress, 0)
     pipes.forEach((pipe) => {
-        drawPipes(pipe.x, pipe.y, 250);
+        drawPipe(pipe.x, pipe.y, 250);
     })
 
-    renderAnimation(bird1Asset, player1.pos.x, player1.pos.y);
+    drawAnimation(bird1Asset, player1.pos.x, player1.pos.y);
     // renderAnimation(bird2Asset, player2.x, player2.y);
 }
 
-function drawPipes(x, y, gap) {
+function drawPipe(x, y, gap) {
     // Top
     push();
     translate(x, y - gap /2);
@@ -124,7 +125,7 @@ function loadAnimation(files) {
     }
 }
 
-function renderAnimation(animation, x, y) {
+function drawAnimation(animation, x, y) {
     var img = animation.images[animation.frame];
     animation.frame = int(frameCount / (desiredFrameRate/8)) % animation.frames;
 
